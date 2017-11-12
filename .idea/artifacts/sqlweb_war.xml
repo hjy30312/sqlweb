@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sqlweb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="sqlweb.war">
+      <element id="artifact" artifact-name="sqlweb:war exploded" />
+    </root>
+  </artifact>
+</component>
