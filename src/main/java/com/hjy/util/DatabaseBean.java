@@ -5,7 +5,6 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,24 +16,33 @@ import java.util.Properties;
  * @author hjy
  * @create 2017/11/12
  **/
-public class JdbcUtils {
+public class DatabaseBean {
     public static Properties sqlProperties = new Properties();
     private static String driver;
     private static String url;
     private static String user;
     private static String password;
     private static Connection connection = null;
-    private static DataSource ds= null;
+    private static OracleDataSource ds= null;
 
+    /**
+     * 静态加载
+     */
     static {
         try {
             //加载配置文件
-            InputStream in = JdbcUtils.class.getResourceAsStream("jdbc.properties");
+            InputStream in = DatabaseBean.class.getResourceAsStream("/jdbc.properties");
             Properties prop = new Properties();
             prop.load(in);
+            url = prop.getProperty("url");
+            user = prop.getProperty("user");
+            password = prop.getProperty("password");
+
             //创建数据源
-            ds = new BasicDataSource();
-            ds = BasicDataSourceFactory.createDataSource(prop);
+            ds = new OracleDataSource();
+
+            ds.setURL(url);
+
         }  catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,7 +54,7 @@ public class JdbcUtils {
      * @throws SQLException
      */
     public static Connection getConnection() throws SQLException {
-        return ds.getConnection();
+        return ds.getConnection(user,password);
     }
 
     /**
@@ -74,6 +82,15 @@ public class JdbcUtils {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        Connection connection = null;
+        try {
+            connection = DatabaseBean.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

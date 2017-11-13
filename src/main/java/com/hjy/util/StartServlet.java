@@ -15,7 +15,7 @@ public class StartServlet extends HttpServlet {
     public void init() throws ServletException {
         try {
             InputStream inputStream = StartServlet.class.getResourceAsStream("jdbc.properties");
-            JdbcUtils.sqlProperties.load(inputStream);
+            DatabaseBean.sqlProperties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
