@@ -1,6 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <html>
 <head>
     <title>数据库系统实现课程教学演示系统</title>
@@ -21,7 +21,11 @@
                     <div class="panel-head">
                         <strong class="icon-file-text"> 文章分类</strong>
                     </div>
-
+                    <ul class="list-group">
+                        <c:forEach var="category" items="${categories}" varStatus="status">
+                            <li><span class="float-right badge bg-main">${category.count}</span><a href="ArticleList?cid=${category.cid}">${category.catename}</a></li>
+                        </c:forEach>
+                    </ul>
                 </div>
                 <!--友情链接-->
                 <jsp:include page="jsp/include/front/friendship_link.jsp"/>

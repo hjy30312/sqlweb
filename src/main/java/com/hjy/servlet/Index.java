@@ -2,6 +2,7 @@ package com.hjy.servlet;
 
 import com.hjy.iservice.IArticleService;
 import com.hjy.iservice.ICategoryService;
+import com.hjy.model.Article;
 import com.hjy.model.Category;
 import com.hjy.util.MyFactory;
 import com.hjy.util.Pagination;
@@ -12,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.rpc.ServiceException;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,22 +25,27 @@ import java.util.List;
 public class Index extends HttpServlet{
 
 
-    //private final IArticleService articleService = (IArticleService) MyFactory.getObject("articleService");
-    //private final ICategoryService categoryService = (ICategoryService) MyFactory.getObject("categoryService");
+    private final IArticleService articleService = (IArticleService) MyFactory.getObject("articleService");
+    private final ICategoryService categoryService = (ICategoryService) MyFactory.getObject("categoryService");
 
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         try {
-            /*
+
             Pagination pagination = new Pagination();
 
             pagination.setPageNo(1);
-
             List<Category> categories = categoryService.findAllCategory();
 
 
+           // List<Article> articles = articleService.findArticle(pagination);
+            //req.setAttribute("articles", articles);
+
+            req.setAttribute("categories", categories);
+/*
+            List<Category> categories = categoryService.findAllCategory();
             req.setAttribute("categories", categories);*/
             req.getRequestDispatcher("WEB-INF/index.jsp").forward(req, resp);
         } catch (Exception e) {

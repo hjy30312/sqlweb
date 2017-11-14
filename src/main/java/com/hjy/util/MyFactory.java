@@ -1,5 +1,7 @@
 package com.hjy.util;
 
+import com.hjy.iservice.IArticleService;
+
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -20,6 +22,7 @@ public class MyFactory {
         }
     }
     public static void main(String[] args) {
+        IArticleService articleService = (IArticleService)MyFactory.getObject("articleService");
 
     }
 

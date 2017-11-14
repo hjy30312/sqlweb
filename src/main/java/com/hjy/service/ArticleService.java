@@ -1,7 +1,9 @@
 package com.hjy.service;
 
+import com.hjy.idao.IArticleDao;
 import com.hjy.iservice.IArticleService;
 import com.hjy.model.Article;
+import com.hjy.util.MyFactory;
 import com.hjy.util.Pagination;
 
 import javax.xml.rpc.ServiceException;
@@ -12,6 +14,8 @@ import java.util.List;
  * @create 2017/11/13
  **/
 public class ArticleService implements IArticleService {
+
+    private final IArticleDao articleDao = (IArticleDao) MyFactory.getObject("articleDao");
 
     @Override
     public void addArticle(Article article) throws ServiceException {
@@ -50,7 +54,9 @@ public class ArticleService implements IArticleService {
 
     @Override
     public List<Article> findArticle(Pagination pagination) throws ServiceException {
-        return null;
+        List<Article> articleList = null;
+        articleList = articleDao.selectSome(pagination);
+        return articleList;
     }
 
     @Override

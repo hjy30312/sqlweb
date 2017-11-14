@@ -119,5 +119,16 @@ public class CategoryDao implements ICategoryDao {
         }
         return list;
     }
-    
+
+    /**
+     * 测试
+     * @param args
+     */
+    public static void main(String[] args) {
+        CategoryDao categoryDao = new CategoryDao();
+        List<Category> list = categoryDao.selectAll();
+        System.out.println(list.size());
+    }
+
+
 }
