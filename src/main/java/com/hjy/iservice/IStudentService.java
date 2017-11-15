@@ -2,8 +2,8 @@ package com.hjy.iservice;
 
 import com.hjy.model.Student;
 import com.hjy.util.Pagination;
+import com.hjy.util.ServiceException;
 
-import javax.xml.rpc.ServiceException;
 import java.util.List;
 
 /**

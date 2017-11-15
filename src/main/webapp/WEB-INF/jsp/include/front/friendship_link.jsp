@@ -5,7 +5,7 @@
   Time: 22:43
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="panel margin-big-bottom">
     <div class="panel-head">
         <strong class="icon-list"> 友情链接</strong>

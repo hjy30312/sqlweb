@@ -4,13 +4,13 @@ import com.hjy.iservice.IStudentService;
 import com.hjy.model.Student;
 import com.hjy.util.MyFactory;
 import com.hjy.util.Pagination;
+import com.hjy.util.ServiceException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.rpc.ServiceException;
 import java.io.IOException;
 import java.util.List;
 
@@ -45,6 +45,7 @@ public class StudentList extends HttpServlet{
         } else {
             pagination.setUrl("StudentList?style=" + style);
         }
+        //一页9个人
         if (style.equals("frame")) {
             pagination.setPageSize(9);
         }
@@ -62,14 +63,14 @@ public class StudentList extends HttpServlet{
                 // 将分页信息转发到下一页
                 request.setAttribute("pagination", pagination);
 
-                if ("table".equals(style)) {
-                    request.getRequestDispatcher("student_table.jsp").forward(request, response);
+                if ("frame".equals(style)) {
+                    request.getRequestDispatcher("WEB-INF/student_frame.jsp").forward(request, response);
                 }
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            }  catch (IOException e) {
                 e.printStackTrace();
             } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (ServiceException e) {
                 e.printStackTrace();
             }
     }

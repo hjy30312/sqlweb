@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/11/15
-  Time: 14:42
-  To change this template use File | Settings | File Templates.
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@page isELIgnored="false" %>
 <html>
 <head>
     <%@include file="jsp/include/front/head.jsp" %>
