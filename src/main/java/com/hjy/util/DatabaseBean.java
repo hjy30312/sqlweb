@@ -58,7 +58,7 @@ public class DatabaseBean {
     }
 
     /**
-     * 释放资源
+     * 释放资源 用于有返回结果集的
      * 释放的资源包括Connection数据库连接对象，负责执行SQL命令的Statement对象，
      * 存储查询结果的ResultSet对象
      * @param rs
@@ -77,6 +77,25 @@ public class DatabaseBean {
                 psmt.close();
             }
             //将Connection连接对象还给数据库连接池
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 释放资源 用于无返回结果集的
+     * 释放的资源包括Connection数据库连接对象，负责执行SQL命令的Statement对象
+     * @param psmt
+     * @param conn
+     */
+    public static void release(PreparedStatement psmt, Connection conn) {
+        try {
+            if (psmt != null) {
+                psmt.close();
+            }
             if (conn != null) {
                 conn.close();
             }
