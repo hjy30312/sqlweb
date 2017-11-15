@@ -30,12 +30,14 @@ public class StudentList extends HttpServlet{
         String sno = request.getParameter("sno");
         String pageNo = request.getParameter("pageNo");
         int page = 1;
+
         if (pageNo != null) {
             page = Integer.parseInt(pageNo);
         }
         if (style == null) {
             style = "table";
         }
+
         Pagination pagination = new Pagination();
         pagination.setPageNo(page);
 
