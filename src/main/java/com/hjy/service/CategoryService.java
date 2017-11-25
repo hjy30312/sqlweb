@@ -55,10 +55,16 @@ public class CategoryService implements ICategoryService {
         return category;
     }
 
+    /**
+     * 找到所有的文章分类
+     * @return
+     * @throws ServiceException
+     */
     @Override
     public List<Category> findAllCategory() throws ServiceException {
         List<Category> categoryList = null;
         try {
+            System.out.println("调用categoryDao.selectAll();");
             categoryList = categoryDao.selectAll();
         } catch (Exception e) {
             e.printStackTrace();

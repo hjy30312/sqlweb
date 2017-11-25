@@ -111,6 +111,10 @@ public class CategoryDao implements ICategoryDao {
                 category.setDescription(rs.getString("description"));
                 category.setCount(rs.getInt("count"));
                 list.add(category);
+                System.out.println("Catename:" + category.getCatename()
+                                + "Cid:" + category.getCid()
+                                + "Description:" + category.getDescription()
+                                + "Count:" + category.getCount());
             }
         } catch (SQLException e) {
             //throw new DaoException("数据库操作异常，请稍后重试!", e);
@@ -123,7 +127,7 @@ public class CategoryDao implements ICategoryDao {
     /**
      * 测试
      * @param args
-     */
+    */
     public static void main(String[] args) {
         CategoryDao categoryDao = new CategoryDao();
         List<Category> list = categoryDao.selectAll();

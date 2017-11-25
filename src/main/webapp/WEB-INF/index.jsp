@@ -67,7 +67,7 @@
 <!--内容结束-->
 
 <!--尾部开始-->
-<jsp include page="include/footer.jsp"/>
+<jsp:include page="jsp/include/footer.jsp"/>
 <!--尾部结束-->
 </body>
 </html>
