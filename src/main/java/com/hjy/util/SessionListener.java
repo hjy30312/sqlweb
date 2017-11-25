@@ -1,7 +1,7 @@
 package com.hjy.util;
 
 import javax.servlet.ServletContext;
-
+import java.util.ArrayList;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
@@ -19,6 +19,7 @@ public class SessionListener implements HttpSessionListener {
      */
     @Override
     public void sessionCreated(HttpSessionEvent se) {
+
         ServletContext sc = se.getSession().getServletContext();
         Integer totalcount = (Integer) sc.getAttribute("totalcount");
         Integer accesscount = (Integer) sc.getAttribute("accesscount");
