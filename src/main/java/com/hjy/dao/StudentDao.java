@@ -20,7 +20,11 @@ import java.util.List;
  * @create 2017/11/15
  **/
 public class StudentDao implements IStudentDao {
-
+    /**
+     * 数据库的链接对象 conn
+     * 预编译sql语句对象 psmt
+     * 结果集 rs
+     */
     Connection conn = null;
     PreparedStatement psmt = null;
     ResultSet rs = null;

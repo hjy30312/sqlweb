@@ -17,7 +17,12 @@ import java.util.List;
  * @author qixin
  */
 public class CategoryDao implements ICategoryDao {
-    
+
+    /**
+     * 数据库的链接对象 conn
+     * 预编译sql语句对象 psmt
+     * 结果集 rs
+     */
     Connection conn = null;
     PreparedStatement psmt = null;
     ResultSet rs = null;
